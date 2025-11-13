@@ -35,8 +35,6 @@ hedgedoc/
 │   ├── SETUP-WSL.md               # Інструкція WSL2 з нуля (20-30 хв)
 │   ├── SETUP-RASPBERRY.md         # Інструкція Raspberry Pi з нуля (30-60 хв)
 │   └── TROUBLESHOOTING.md         # Вирішення проблем
-│
-├── docs-history/                   # Історія розробки (можна видалити)
 └── README.md                       # Цей файл
 ```
 
