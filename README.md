@@ -1,96 +1,105 @@
-<!--
-SPDX-FileCopyrightText: 2021 The HedgeDoc developers (see AUTHORS file)
+# HedgeDoc 1.x - Готове рішення
 
-SPDX-License-Identifier: CC-BY-SA-4.0
--->
+Мінімальний пакет для запуску HedgeDoc 1.x (стабільна версія) на Windows WSL2 Debian або Raspberry Pi.
 
-![HedgeDoc Logo](docs/content/images/hedgedoc_logo_black.svg)
+## 🚀 Швидкий старт
 
-[![#HedgeDoc on matrix.org][matrix.org-image]][matrix.org-url]
-[![version][github-version-badge]][github-release-page]
-[![POEditor][poeditor-image]][poeditor-url]
-[![Mastodon][social-mastodon-image]][social-mastodon]
-![REUSE Compliance Check][reuse-workflow-badge]
-![Nest.JS CI][nestjs-workflow-badge]
-[![codecov][codecov-badge]][codecov-url]
+### Windows + WSL2 Debian
 
-HedgeDoc lets you create real-time collaborative markdown notes. 
+```
+Подвійний клік на: hedgedoc-clean/start-hedgedoc.bat
+```
 
-## Getting Started
-- ℹ️ Read all about HedgeDoc and the history of the project on [our website](https://hedgedoc.org)
-- 🧪 Try out HedgeDoc with the [demo instance][hedgedoc-demo]. Check out the [features page][hedgedoc-demo-features]!
-- 💽 Install HedgeDoc yourself using the [install guide](https://docs.hedgedoc.org/setup/getting-started/)
-- ❓ Questions? Join our [Matrix chat][matrix.org-url] or the [community forums][hedgedoc-community]
-- 💬 Stay up to date by subscribing to the [release feed][github-release-feed]
+Відкрий: http://localhost:3000
 
+### Linux / Raspberry Pi
 
-## State of the project
-HedgeDoc 1.x is stable and used around the world, but the codebase has [grown over time](https://hedgedoc.org/history/),
-making it hard to add new features.  
-We are currently working on HedgeDoc 2, a complete rewrite of HedgeDoc. Please note the following:
+```bash
+cd hedgedoc-clean
+./start-hedgedoc.sh
+```
 
-- This branch contains the latest development code and does not implement all features yet.
-  **If you are looking for the 1.x source code, have a look at the [master branch](https://github.com/hedgedoc/hedgedoc/tree/master).**
-- The 1.x release is maintenance-only. We do not accept feature requests or PRs for this release anymore and may choose
-  to close non-critical bug reports, if the bug will be non-existent in 2.0.
-- HedgeDoc 2 will be split in two components. The backend and the frontend. Both are present in this repository.
+Відкрий: http://localhost:3000
 
-## Development
-Information for setting up a local development environment can be found in the [developer documentation](https://docs.hedgedoc.dev/how-to/develop/setup/)
+## 📁 Структура проекту
 
-## HedgeDoc 2 Alpha
-Curious about the new look and feel of HedgeDoc 2? We provide a demo of the alpha on [hedgedoc.dev](https://hedgedoc.dev).
+```
+hedgedoc/
+├── hedgedoc-clean/                 ⭐ ВСЕ ЩО ПОТРІБНО ТУТ
+│   ├── docker-compose.yml          # Конфігурація Docker
+│   ├── start-hedgedoc.bat          # Запуск Windows + WSL2
+│   ├── stop-hedgedoc.bat           # Зупинка Windows + WSL2
+│   ├── start-hedgedoc.sh           # Запуск Linux/Raspberry Pi
+│   ├── stop-hedgedoc.sh            # Зупинка Linux/Raspberry Pi
+│   ├── README.md                   # Загальна інформація
+│   ├── SETUP-WSL.md               # Інструкція WSL2 з нуля (20-30 хв)
+│   ├── SETUP-RASPBERRY.md         # Інструкція Raspberry Pi з нуля (30-60 хв)
+│   └── TROUBLESHOOTING.md         # Вирішення проблем
+│
+├── docs-history/                   # Історія розробки (можна видалити)
+└── README.md                       # Цей файл
+```
 
-If you want to try it out on your own devices, visit the [HedgeDoc 2 docs](https://docs.hedgedoc.dev).
-But be aware that these may change over time.
+## 📦 Встановлення на нову машину
 
-## Contributions
+### Варіант 1: Тільки необхідне (рекомендовано)
 
-We welcome contributions!  
-Have a look at our [contribution docs](CONTRIBUTING.md) to find out how you can help. If you want to contribute to
-HedgeDoc 2, please join our [development chat][matrix.org-dev-url].
+Скопіюй тільки папку `hedgedoc-clean/` на нову машину - це все що потрібно!
 
-# License
+```bash
+# Приклад для Linux/Raspberry Pi
+scp -r hedgedoc-clean/ user@new-machine:~/
+```
 
-Licensed under AGPLv3. For our list of contributors, see [AUTHORS](AUTHORS).
+### Варіант 2: Весь проект
 
-The license does not include the HedgeDoc logo, whose terms of usage can be found in
-the [github repository](https://github.com/hedgedoc/hedgedoc-logo).
+Скопіюй всю папку `hedgedoc/` якщо хочеш зберегти історію розробки.
 
-[matrix.org-image]: https://img.shields.io/matrix/hedgedoc:matrix.org?logo=matrix&server_fqdn=matrix.org
+## 📚 Документація
 
-[matrix.org-url]: https://chat.hedgedoc.org
+Вся необхідна документація знаходиться в папці `hedgedoc-clean/`:
 
-[matrix.org-dev-url]: https://chat.hedgedoc.org/dev
+1. **[hedgedoc-clean/README.md](hedgedoc-clean/README.md)** - загальна інформація
+2. **[hedgedoc-clean/SETUP-WSL.md](hedgedoc-clean/SETUP-WSL.md)** - інструкція WSL2 з нуля (20-30 хв)
+3. **[hedgedoc-clean/SETUP-RASPBERRY.md](hedgedoc-clean/SETUP-RASPBERRY.md)** - інструкція Raspberry Pi з нуля (30-60 хв)
+4. **[hedgedoc-clean/TROUBLESHOOTING.md](hedgedoc-clean/TROUBLESHOOTING.md)** - вирішення проблем
 
-[github-version-badge]: https://img.shields.io/github/release/hedgedoc/hedgedoc.svg
+**Історія розробки:** Папка `docs-history/` містить додаткову документацію та історію вирішення проблем (можна видалити)
 
-[github-release-page]: https://github.com/hedgedoc/hedgedoc/releases
+## Що це?
 
-[github-release-feed]: https://github.com/hedgedoc/hedgedoc/releases.atom
+HedgeDoc - це markdown редактор з підтримкою реал-тайм колаборації.
 
-[github-issue-tracker]: https://github.com/hedgedoc/hedgedoc/issues/
+**Можливості:**
+- ✅ Markdown редактор
+- ✅ Реал-тайм колаборація
+- ✅ Діаграми (Mermaid, PlantUML)
+- ✅ Математичні формули (LaTeX)
+- ✅ Експорт в PDF/HTML
+- ✅ Анонімний доступ
 
-[poeditor-image]: https://img.shields.io/badge/POEditor-translate-blue.svg
+## Системні вимоги
 
-[poeditor-url]: https://poeditor.com/join/project/1OpGjF2Jir
+### Windows + WSL2
+- Windows 10/11
+- WSL2 з Debian
+- 2GB RAM
+- 5GB вільного місця
 
-[hedgedoc-demo]: https://hedgedoc.org/demo/
+### Raspberry Pi
+- Raspberry Pi Zero 2W або новіше
+- Raspberry Pi OS (64-bit рекомендовано)
+- 1GB RAM мінімум
+- 4GB вільного місця
 
-[hedgedoc-demo-features]: https://demo.hedgedoc.org/features
+## Підтримка
 
-[hedgedoc-community]: https://community.hedgedoc.org
+- Офіційна документація: https://docs.hedgedoc.org/
+- GitHub: https://github.com/hedgedoc/hedgedoc
+- Community: https://community.hedgedoc.org
 
-[hedgedoc-community-calls]: https://community.hedgedoc.org/t/codimd-community-call/19
+---
 
-[social-mastodon]: https://social.hedgedoc.org/mastodon
-
-[social-mastodon-image]: https://img.shields.io/mastodon/follow/109259563190314667?domain=https%3A%2F%2Ffosstodon.org&style=social
-
-[reuse-workflow-badge]: https://github.com/hedgedoc/hedgedoc/workflows/REUSE%20Compliance%20Check/badge.svg
-
-[nestjs-workflow-badge]: https://github.com/hedgedoc/hedgedoc/workflows/Nest.JS%20CI/badge.svg
-
-[codecov-badge]: https://codecov.io/gh/hedgedoc/hedgedoc/branch/develop/graph/badge.svg?token=pdaRF4qjNQ
-
-[codecov-url]: https://codecov.io/gh/hedgedoc/hedgedoc
+**Версія:** HedgeDoc 1.10.0  
+**Дата:** 2025-11-13  
+**Статус:** ✅ Готово до використання

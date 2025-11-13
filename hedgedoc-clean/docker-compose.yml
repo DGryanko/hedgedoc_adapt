@@ -1,0 +1,48 @@
+services:
+  database:
+    image: postgres:13.4-alpine
+    environment:
+      - POSTGRES_USER=hedgedoc
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=hedgedoc
+    volumes:
+      - database:/var/lib/postgresql/data
+    restart: always
+    networks:
+      hedgedoc-net:
+        ipv4_address: 172.20.0.2
+
+  app:
+    image: quay.io/hedgedoc/hedgedoc:1.10.0
+    environment:
+      - CMD_DB_URL=postgres://hedgedoc:password@172.20.0.2:5432/hedgedoc
+      - CMD_DOMAIN=localhost
+      - CMD_URL_ADDPORT=true
+      - CMD_PORT=3000
+      - CMD_PROTOCOL_USESSL=false
+      - CMD_ALLOW_ANONYMOUS=true
+      - CMD_ALLOW_ANONYMOUS_EDITS=true
+      - CMD_ALLOW_FREEURL=true
+    volumes:
+      - uploads:/hedgedoc/public/uploads
+    ports:
+      - "3000:3000"
+    restart: always
+    depends_on:
+      - database
+    extra_hosts:
+      - "database:172.20.0.2"
+    networks:
+      hedgedoc-net:
+        ipv4_address: 172.20.0.3
+
+volumes:
+  database:
+  uploads:
+
+networks:
+  hedgedoc-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
